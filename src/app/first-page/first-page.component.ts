@@ -38,7 +38,7 @@ export class FirstPageComponent implements OnInit {
       .subscribe({
         next: (user) => {
           console.log(user);
-          localStorage.setItem('token', user.Token);
+          // localStorage.setItem('token', user.Token);
           this.router.navigateByUrl('second');
         },
         error: error => {

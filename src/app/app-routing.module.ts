@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SeccondPageComponent } from './seccond-page/seccond-page.component';
+import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'second',
     component: SeccondPageComponent
+  },
+  {
+    path: 'third',
+    component: TwoWayBindingComponent
   },
 ];
 

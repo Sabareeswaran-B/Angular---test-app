@@ -1,1 +1,24 @@
-<p>seccond-page works!</p>
+<div style="padding: 15px; margin: 50px; border-radius: 15px;" [appShadow]="color">
+    <p>{{birthDay | date: "dd/MM/yyyy"}}</p>
+    <input [(ngModel)]="name" placeholder="Enter your name" type="text"><br>
+    {{name | removeA}}
+</div>
+
+<ol>
+    <li *ngFor="let intern of interns">
+        <p *ngIf="intern != 'Sabareeswaran';else internElse">
+            {{intern}}
+        </p>
+    </li>
+</ol>
+
+<ng-template #internElse>
+    <p>
+        Sabarees
+    </p>
+</ng-template>
+<!-- <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
+</signature-pad>
+<button (click)="onClear()">Clear</button>
+<button (click)="onSignatureSubmit()">Submit</button>
+<img [src]="image"> -->

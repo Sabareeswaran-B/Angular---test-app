@@ -1,0 +1,4 @@
+<p>two-way-binding works!</p>
+<input type="number" [(ngModel)]="fontSizePx"><br />
+<div [style.font-size.px]="fontSizePx" [ngClass]="currentClasses" [ngStyle]="currentStyles">
+    Resizable Text with font size: {{fontSizePx}}</div>

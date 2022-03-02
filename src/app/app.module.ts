@@ -7,19 +7,27 @@ import { SeccondPageComponent } from './seccond-page/seccond-page.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SignaturePadModule } from 'angular2-signaturepad';
+import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
+import { RemoveAPipe } from './remove-a.pipe';
+import { ShadowDirective } from './shadow.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SeccondPageComponent,
-    FirstPageComponent
+    FirstPageComponent,
+    TwoWayBindingComponent,
+    RemoveAPipe,
+    ShadowDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SignaturePadModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
