@@ -12,6 +12,7 @@ import { AccountService } from '../_services/userServices';
 export class FirstPageComponent implements OnInit {
 
   loginForm!: FormGroup;
+  remember = false;
   constructor(
     private accountService: AccountService,
     private formBuilder: FormBuilder,
@@ -22,7 +23,8 @@ export class FirstPageComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      remember: ['']
     });
   }
 
@@ -45,6 +47,12 @@ export class FirstPageComponent implements OnInit {
           console.log(error);
         }
       });
+  }
+
+  rememberEvent(_remember:boolean)  {
+    this.f['remember'].setValue(_remember);
+    this.remember = _remember;
+    
   }
 
 }

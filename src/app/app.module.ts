@@ -11,6 +11,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
 import { RemoveAPipe } from './remove-a.pipe';
 import { ShadowDirective } from './shadow.directive';
+import { IntractionComponent } from './intraction/intraction.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ShadowDirective } from './shadow.directive';
     FirstPageComponent,
     TwoWayBindingComponent,
     RemoveAPipe,
-    ShadowDirective
+    ShadowDirective,
+    IntractionComponent
   ],
   imports: [
     BrowserModule,
