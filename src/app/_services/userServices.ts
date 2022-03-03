@@ -28,7 +28,7 @@ export class AccountService {
         return this.http.post<User>(`${environment.apiUrl}/account`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', user.Token);
+                localStorage.setItem('token', user.Token);
                 // this.userSubject.next(user);
                 return user;
             }));
@@ -36,7 +36,7 @@ export class AccountService {
 
     logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         // this.userSubject.next(null);
         this.router.navigate(['/account/login']);
     }
@@ -61,7 +61,6 @@ export class AccountService {
     //                 // update local storage
     //                 const user = { ...this.userValue, ...params };
     //                 localStorage.setItem('user', JSON.stringify(user));
-
     //                 // publish updated user to subscribers
     //                 this.userSubject.next(user);
     //             }

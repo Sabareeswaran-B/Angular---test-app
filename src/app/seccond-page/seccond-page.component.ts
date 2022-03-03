@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad';
+import { first } from 'rxjs';
+import { Store } from '../_models/store';
+import { TestService } from '../_services/test.service';
 
 @Component({
   selector: 'app-seccond-page',
@@ -17,15 +20,15 @@ export class SeccondPageComponent implements OnInit {
     'canvasHeight': 300,
     'backgroundColor': "whitesmoke",
   };
-
-  image!:string;
+  stores!: Array<Store>;
+  image!: string;
   fontSizePx = 16;
   birthDay = new Date(1999, 10, 25);
   name = "";
   color = "whitesmoke";
   interns = ["Tamil", "Kaniskar", "Vishnu", "Sabareeswaran"];
 
-  constructor() {
+  constructor(private testService: TestService) {
     // no-op
   }
 
@@ -54,6 +57,23 @@ export class SeccondPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getStores();
+  }
+
+  getStores() {
+    this.stores = [];
+    this.testService.getStores()
+    .pipe(first())
+    .subscribe(
+      {
+        next: store => {
+          this.stores = [...store];
+        },
+        error: error => {
+          console.log(error)
+        }
+      }
+    )
   }
 
 }

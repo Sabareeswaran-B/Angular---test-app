@@ -12,6 +12,32 @@
     </li>
 </ol>
 
+<br>
+
+<ol>
+    <li *ngFor="let store of stores">
+        <ul>
+            <li>
+                <p>
+                    <b>Store Name:</b> {{store.storeName}}
+                </p>
+            </li>
+            <li>
+                <p>
+                    <b>Owner Name:</b> {{store.ownerName}}
+                </p>
+            </li>
+            <li>
+                <p>
+                    <b>Address:</b> {{store.storeAddress}}
+                </p>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<br><br>
+
 <ng-template #internElse>
     <p>
         Sabarees
