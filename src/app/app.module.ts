@@ -12,6 +12,7 @@ import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.compon
 import { RemoveAPipe } from './remove-a.pipe';
 import { ShadowDirective } from './shadow.directive';
 import { IntractionComponent } from './intraction/intraction.component';
+import { TestService } from './_services/test.service';
 
 @NgModule({
   declarations: [
