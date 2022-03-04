@@ -1,0 +1,10 @@
+.store-card {
+    border: none;
+    border-radius: 10px;
+    min-height: 250px;
+    cursor: pointer;
+}
+
+.card-img {
+    border-radius: 10px;
+}

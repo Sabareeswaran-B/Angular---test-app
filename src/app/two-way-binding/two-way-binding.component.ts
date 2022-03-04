@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../_models/product';
+import { TestService } from '../_services/test.service';
 
 @Component({
   selector: 'app-two-way-binding',
@@ -7,21 +10,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TwoWayBindingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: ActivatedRoute, private testService: TestService) { }
   fontSizePx = 16;
   isSpecial = true
+  id!: string;
+  products: Product[] = [];
   currentClasses: Record<string, boolean> = {};
-  /* . . . */
   setCurrentClasses() {
-    // CSS classes: added/removed per current state of component properties
     this.currentClasses = {
       special: this.isSpecial
     };
   }
   currentStyles: Record<string, string> = {};
-  /* . . . */
   setCurrentStyles() {
-    // CSS styles: set per current state of component properties
     this.currentStyles = {
       'color': this.isSpecial ? 'red' : 'green'
     };
@@ -39,8 +40,19 @@ export class TwoWayBindingComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.router.params.subscribe(params => {
+      this.id = params['id'];
+    });
     this.setCurrentClasses();
     this.setCurrentStyles();
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.testService.getProductsFromSingleStore(this.id)
+    .subscribe(res => {
+      this.products = [...res]
+    })
   }
 
 }

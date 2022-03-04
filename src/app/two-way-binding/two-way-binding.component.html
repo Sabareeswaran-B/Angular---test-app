@@ -1,4 +1,28 @@
-<p>two-way-binding works!</p>
+<!-- <p>two-way-binding works!</p>
 <input type="number" [(ngModel)]="fontSizePx"><br />
 <div [style.font-size.px]="fontSizePx" [ngClass]="currentClasses" [ngStyle]="currentStyles">
-    Resizable Text with font size: {{fontSizePx}}</div>
+    Resizable Text with font size: {{fontSizePx}}</div> -->
+
+
+<div class="container">
+    <div *ngFor="let product of products">
+        <div class="card product-card shadow-lg m-3 mb-4">
+            <div class="row">
+                <div class="card-img bg-dark col-lg-4 col-md-12 col-sm-12" style="width: 250px; height: 175px; border-radius: 20px;">
+                    
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 p-4">
+                    <div class="card-title">
+                        <b>{{product.productName}}</b>
+                    </div>
+                    <div class="card-text">
+                        MRP: ₹ {{product.mrp}}
+                    </div>
+                    <div class="card-text">
+                        Special price <b>₹ {{product.specialPrice}}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

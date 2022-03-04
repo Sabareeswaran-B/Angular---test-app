@@ -1,6 +1,7 @@
 export class User {
-    Id!: number;
-    Username!: string;
-    Role!: string;
-    Token!: string;
+    id!: number;
+    userName!: string;
+    userRole!: string;
+    token!: string;
+    phoneNo!: string;
 }

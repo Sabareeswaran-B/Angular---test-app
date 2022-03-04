@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { SignaturePad } from 'angular2-signaturepad';
 import { first } from 'rxjs';
 import { Store } from '../_models/store';
@@ -26,16 +27,15 @@ export class SeccondPageComponent implements OnInit {
   birthDay = new Date(1999, 10, 25);
   name = "";
   color = "whitesmoke";
-  interns = ["Tamil", "Kaniskar", "Vishnu", "Sabareeswaran"];
 
-  constructor(private testService: TestService) {
+  constructor(private testService: TestService, private router: Router) {
     // no-op
   }
 
   ngAfterViewInit() {
     // this.signaturePad is now available
-    this.signaturePad.set('minWidth', 2); // set szimek/signature_pad options at runtime
-    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+    // this.signaturePad.set('minWidth', 2); // set szimek/signature_pad options at runtime
+    // this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
   }
 
   drawComplete() {
@@ -74,6 +74,10 @@ export class SeccondPageComponent implements OnInit {
         }
       }
     )
+  }
+
+  onStoreClickHandler(storeId:number) {
+    this.router.navigateByUrl(`third/${storeId}`);
   }
 
 }

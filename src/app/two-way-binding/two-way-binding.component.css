@@ -1,0 +1,6 @@
+.product-card {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+}

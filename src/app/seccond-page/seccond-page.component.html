@@ -1,48 +1,34 @@
-<div style="padding: 15px; margin: 50px; border-radius: 15px;" [appShadow]="color">
+<!-- <div style="padding: 15px; margin: 50px; border-radius: 15px;" [appShadow]="color">
     <p>{{birthDay | date: "dd/MM/yyyy"}}</p>
     <input [(ngModel)]="name" placeholder="Enter your name" type="text"><br>
     {{name | removeA}}
-</div>
+</div> -->
 
-<ol>
-    <li *ngFor="let intern of interns">
-        <p *ngIf="intern != 'Sabareeswaran';else internElse">
-            {{intern}}
-        </p>
-    </li>
-</ol>
 
 <br>
 
-<ol>
-    <li *ngFor="let store of stores">
-        <ul>
-            <li>
-                <p>
-                    <b>Store Name:</b> {{store.storeName}}
-                </p>
-            </li>
-            <li>
-                <p>
-                    <b>Owner Name:</b> {{store.ownerName}}
-                </p>
-            </li>
-            <li>
-                <p>
-                    <b>Address:</b> {{store.storeAddress}}
-                </p>
-            </li>
-        </ul>
-    </li>
-</ol>
+<!-- <ol> -->
+<div class="container">
+    <div class="row">
+        <div ngClass="col-lg-4 col-md-6 col-sm-2 mb-4" *ngFor="let store of stores">
+            <div class="card store-card shadow-lg p-3" (click)="onStoreClickHandler(store.storeId)">
+                <div class="card-img bg-dark mb-3" style="min-height: 150px;">
+
+                </div>
+                <div class="card-title">
+                    <b>{{store.storeName}}</b>
+                </div>
+                <div class="card-text">
+                    {{store.storeAddress}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </ol> -->
 
 <br><br>
 
-<ng-template #internElse>
-    <p>
-        Sabarees
-    </p>
-</ng-template>
 <!-- <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
 </signature-pad>
 <button (click)="onClear()">Clear</button>

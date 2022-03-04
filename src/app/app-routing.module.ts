@@ -15,7 +15,7 @@ const routes: Routes = [
     component: SeccondPageComponent
   },
   {
-    path: 'third',
+    path: 'third/:id',
     component: TwoWayBindingComponent
   },
 ];

@@ -22,7 +22,7 @@ export class FirstPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      phoneNo: ['', Validators.required],
       password: ['', Validators.required],
       remember: ['']
     });
@@ -31,11 +31,7 @@ export class FirstPageComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   ngOnLoginSubmit(): void {
-    var user = {
-      email: this.f['email'].value,
-      password: this.f['password'].value
-    }
-    this.accountService.login(this.f['email'].value, this.f['password'].value)
+    this.accountService.login(this.f['phoneNo'].value, this.f['password'].value)
       .pipe(first())
       .subscribe({
         next: (user) => {
@@ -52,7 +48,6 @@ export class FirstPageComponent implements OnInit {
   rememberEvent(_remember:boolean)  {
     this.f['remember'].setValue(_remember);
     this.remember = _remember;
-    
   }
 
 }

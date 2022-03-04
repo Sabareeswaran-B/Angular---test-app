@@ -24,12 +24,10 @@ export class AccountService {
     //     return this.userSubject.value;
     // }
 
-    login(email: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/account`, { email, password })
+    login(phoneNo: string, password: string) {
+        return this.http.post<User>(`${environment.apiUrl}/account/login`, { phoneNo, password })
             .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('token', user.Token);
-                // this.userSubject.next(user);
+                localStorage.setItem('token', user.token);
                 return user;
             }));
     }
