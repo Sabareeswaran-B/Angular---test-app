@@ -1,26 +1,36 @@
-<div class="container-fluid">
-    <main class="form-signin">
-        <form [formGroup]="loginForm" (ngSubmit)="ngOnLoginSubmit()">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-    
-            <div class="form-floating">
-                <input type="tel" formControlName="phoneNo" class="form-control" id="phoneNo" name="phoneNo"
-                    placeholder="Phone Number">
-                <label for="phoneNo">Phone number</label>
+<!-- <div class="container-fluid"> -->
+<main class="form-signin shadow-lg">
+    <form [formGroup]="loginForm" (ngSubmit)="ngOnLoginSubmit()">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+            <input type="tel" formControlName="phoneNo" class="form-control" id="phoneNo" name="phoneNo"
+                placeholder="Phone Number" required>
+            <label for="phoneNo">Phone number</label>
+        </div>
+        <div class="form-floating input-group">
+            <input kendoTextBox [type]="encryptPassword ? 'password' : 'text'" formControlName="password" class="form-control k-border-right-0" id="password"
+                name="password" placeholder="Password">
+            <label for="password">Password</label>
+            <div class="input-group-apppend">
+                <button type="button" class="input-group-text k-bg-primary k-color-light border-0" (click)="passwordShow()">
+                    <fa-icon [icon]="encryptPassword ? show : hide" style="margin: auto;" ></fa-icon>
+                </button>
             </div>
-            <div class="form-floating">
-                <input type="password" formControlName="password" class="form-control" id="password" name="password"
-                    placeholder="Password">
-                <label for="password">Password</label>
-            </div>
-    
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" formControlName="remember"> Remember me
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-        </form>
-    </main>
-</div>
+        </div>
+        <div class="checkbox mb-3">
+            <kendo-label class="k-checkbox-lable" [for]="remember">
+                <input type="checkbox" style="border: 2px solid rgb(190, 190, 190);" #rememberme kendoCheckBox formControlName="remember"> Remember me
+            </kendo-label>
+        </div>
+        <button class="w-100 login-button" *ngIf="!isLoading;else loader" kendoButton themeColor="primary" kendoTooltip
+            title="Signin" type="submit">Sign in</button>
+        <a routerLink="signup" style="float: right;">New User?</a>
+        <ng-template #loader>
+            <button class="w-100 login-button" kendoButton type="button" themeColor="primary" [disabled]="true">
+                <kendo-loader size="medium" themeColor="light">
+                </kendo-loader>
+            </button>
+        </ng-template>
+    </form>
+</main>
+<!-- </div> -->
