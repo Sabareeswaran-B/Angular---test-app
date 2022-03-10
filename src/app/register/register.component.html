@@ -1,0 +1,64 @@
+<main class="form-signup shadow-lg">
+    <form [formGroup]="signupForm">
+
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+        <div class="form-floating">
+            <input kendoTextBox type="text" formControlName="UserName" class="form-control" id="UserName"
+                name="UserName" placeholder="User name">
+            <label for="UserName">User name</label>
+        </div>
+
+        <div class="form-floating">
+            <input kendoTextBox type="text" formControlName="RegNo" class="form-control" id="RegNo" name="RegNo"
+                placeholder="Register number">
+            <label for="RegNo">Register number</label>
+        </div>
+
+        <div class="form-floating">
+            <input kendoTextBox type="email" formControlName="email" class="form-control" id="email" name="email"
+                placeholder="Email">
+            <label for="email">Email</label>
+        </div>
+
+        <div class="form-floating">
+            <input kendoTextBox type="tel" formControlName="phoneNo" class="form-control" id="phoneNo" name="phoneNo"
+                placeholder="Phone Number">
+            <label for="phoneNo">Phone number</label>
+        </div>
+
+        <div class="form-floating input-group">
+            <input kendoTextBox [type]="encryptPassword ? 'password' : 'text'" formControlName="passWord" class="form-control" id="passWord"
+                name="passWord" placeholder="Password" style="border-right: none;">
+            <label for="passWord">Password</label>
+            <div class="input-group-apppend">
+                <button type="button" class="input-group-text k-bg-primary k-color-light border-0" (click)="passwordShow()">
+                    <fa-icon [icon]="encryptPassword ? show : hide" style="margin: auto;" ></fa-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-floating input-group">
+            <input kendoTextBox [type]="encryptCPassword ? 'password' : 'text'" formControlName="cpassWord" class="form-control" id="cpassWord"
+                name="cpassWord" placeholder="Confirm Password" style="border-right: none;">
+            <label for="cpassWord">Confirm Password</label>
+            <div class="input-group-apppend">
+                <button type="button" class="input-group-text k-bg-primary k-color-light border-0" (click)="cpasswordShow()">
+                    <fa-icon [icon]="encryptCPassword ? show : hide" style="margin: auto;" ></fa-icon>
+                </button>
+            </div>
+        </div><br>
+
+        <button class="w-100 p-3" *ngIf="!isLoading;else loader" kendoButton themeColor="primary" kendoTooltip (click)="register()"
+            title="Signin" type="submit">Sign in</button>
+        <a routerLink="" style="float: right;">Already an user?</a>
+
+        <ng-template #loader>
+            <button class="w-100 p-3" kendoButton type="button" themeColor="primary" [disabled]="true">
+                <kendo-loader size="medium" themeColor="light">
+                </kendo-loader>
+            </button>
+        </ng-template>
+        
+    </form>
+</main>

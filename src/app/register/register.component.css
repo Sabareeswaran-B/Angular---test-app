@@ -1,0 +1,28 @@
+.form-signup {
+    width: 100%;
+    max-width: 600px;
+    padding: 50px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.form-signup .checkbox {
+    font-weight: 400;
+}
+
+.form-signup input {
+    margin-bottom: 10px;
+    border: 2px solid rgb(200, 200, 200);
+}
+
+.input-group :focus {
+    z-index: 0;
+}
+
+.input-group-text {
+    height: 58px;
+    border: none;
+    border: 2px solid rgb(240, 240, 240);
+    width: 58px;
+}
