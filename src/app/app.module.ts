@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,19 @@ import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.compon
 import { RemoveAPipe } from './remove-a.pipe';
 import { ShadowDirective } from './shadow.directive';
 import { IntractionComponent } from './intraction/intraction.component';
-import { TestService } from './_services/test.service';
+import { IndicatorsModule, LoaderModule } from '@progress/kendo-angular-indicators';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LayoutModule } from '@progress/kendo-angular-layout';
+import { TooltipsModule } from '@progress/kendo-angular-tooltip';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { RegisterComponent } from './register/register.component';
+import { IconsModule } from '@progress/kendo-angular-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core';
+import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -22,7 +34,9 @@ import { TestService } from './_services/test.service';
     TwoWayBindingComponent,
     RemoveAPipe,
     ShadowDirective,
-    IntractionComponent
+    IntractionComponent,
+    DashboardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +44,25 @@ import { TestService } from './_services/test.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SignaturePadModule 
+    SignaturePadModule,
+    LoaderModule,
+    IndicatorsModule,
+    NotificationModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    TooltipsModule,
+    ButtonsModule,
+    InputsModule,
+    IconsModule,
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor() {
+    library.add(faFilm as IconDefinition);
+  }
+}
