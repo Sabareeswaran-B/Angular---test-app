@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from "../../environments/environment";
 import { User } from '../_models/user';
+import { Register } from '../_models/register';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -39,8 +40,8 @@ export class AccountService {
         this.router.navigate(['/account/login']);
     }
 
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    register(user: Register) {
+        return this.http.post(`${environment.apiUrl}/user`, user);
     }
 
     getAll() {
