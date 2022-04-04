@@ -6,6 +6,10 @@ import { first } from 'rxjs';
 import { AccountService } from '../_services/userServices';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Store } from '@ngrx/store';
+import { login } from '../NGRX/login.action';
+import { User } from '../_models/user';
+import { increment } from '../NGRX/counter.action';
 
 @Component({
   selector: 'app-first-page',
@@ -26,7 +30,8 @@ export class FirstPageComponent implements OnInit {
     private accountService: AccountService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private toast: NotificationService
+    private toast: NotificationService,
+    private store: Store<{ count: number, login: User }>
   ) {
   }
 
@@ -47,6 +52,7 @@ export class FirstPageComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (user) => {
+          this.store.dispatch(login(user))
           this.isLoading = false;
           this.submitButtonText = "Submit";
           console.log(user);
@@ -64,7 +70,7 @@ export class FirstPageComponent implements OnInit {
           this.isLoading = false;
           this.submitButtonText = "Submit";
           this.toast.show({
-            content: error.error.title != null ? error.error.title : (typeof error.error) == 'string' ?  error.error : "Something went wrong",
+            content: error.error.title != null ? error.error.title : (typeof error.error) == 'string' ? error.error : "Something went wrong",
             hideAfter: 600,
             position: { horizontal: "right", vertical: "top" },
             animation: { type: "fade", duration: 400 },

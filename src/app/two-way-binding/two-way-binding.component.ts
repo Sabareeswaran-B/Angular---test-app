@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Product } from '../_models/product';
 import { TestService } from '../_services/test.service';
 
@@ -9,8 +11,11 @@ import { TestService } from '../_services/test.service';
   styleUrls: ['./two-way-binding.component.css']
 })
 export class TwoWayBindingComponent implements OnInit {
+  count$: Observable<number>;
 
-  constructor(private router: ActivatedRoute, private testService: TestService) { }
+  constructor(private router: ActivatedRoute, private testService: TestService, store: Store<{ count: number }>) { 
+    this.count$ = store.select('count');
+  }
   fontSizePx = 16;
   isSpecial = true
   id!: string;

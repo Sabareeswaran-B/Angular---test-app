@@ -25,6 +25,10 @@ import { IconsModule } from '@progress/kendo-angular-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './NGRX/counter.reducer';
+import { LoginReducer } from './NGRX/login.reducer';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,8 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
     InputsModule,
     IconsModule,
     FontAwesomeModule,
+    NgbModule,
+    StoreModule.forRoot({ count: counterReducer, login: LoginReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
